@@ -20,7 +20,125 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0b0e14;
+  color: #e5e9f0;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  margin: 0;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.terminal-bg {
+  background: radial-gradient(circle at top left, #1f2933 0, #0b0e14 45%, #050608 100%);
+}
+
+.terminal-window {
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(15, 23, 42, 0.8);
+  border-radius: 12px;
+  background-color: #050608;
+  border: 1px solid #1f2933;
+}
+
+.terminal-header {
+  border-bottom: 1px solid #111827;
+  background: linear-gradient(to bottom, #111827, #020617);
+}
+
+.terminal-header-buttons span {
+  width: 11px;
+  height: 11px;
+  border-radius: 9999px;
+}
+
+.terminal-header-buttons span:nth-child(1) {
+  background-color: #ef4444;
+}
+
+.terminal-header-buttons span:nth-child(2) {
+  background-color: #facc15;
+}
+
+.terminal-header-buttons span:nth-child(3) {
+  background-color: #22c55e;
+}
+
+.terminal-body {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.terminal-prompt {
+  color: #6ee7b7;
+}
+
+.terminal-path {
+  color: #60a5fa;
+}
+
+.terminal-command {
+  color: #e5e7eb;
+}
+
+.terminal-flag {
+  color: #fbbf24;
+}
+
+.token-keyword {
+  color: #7dd3fc;
+}
+
+.token-flag {
+  color: #facc15;
+}
+
+.token-path {
+  color: #a5b4fc;
+}
+
+.token-error {
+  color: #f87171;
+}
+
+.terminal-input-field {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  caret-color: #f97316;
+}
+
+.terminal-input-field::selection {
+  background-color: rgba(248, 113, 113, 0.35);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 0.6ch;
+  margin-left: 1px;
+  background-color: #f97316;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.autocomplete-panel {
+  backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.94);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+.autocomplete-item-active {
+  background: linear-gradient(to right, rgba(56, 189, 248, 0.15), rgba(16, 185, 129, 0.2));
 }
