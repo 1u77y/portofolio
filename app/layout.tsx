@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,10 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "React & TypeScript Developer Portfolio",
+  title: "WASSI Soultone — Fullstack (Python/Django) & Cybersecurity",
   description:
-    "Portfolio of a React + TypeScript developer with 4 years of experience building secure, API-driven platforms.",
+    "Portfolio de WASSI Soultone — Développeur fullstack (Python/Django) & analyste cybersécurité. Expérience en produits web, API, DevOps, SOC et pentest.",
 };
 
 export default function RootLayout({
@@ -24,9 +30,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
