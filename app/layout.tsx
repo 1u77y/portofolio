@@ -19,9 +19,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "WASSI Soultone — Fullstack (Python/Django) & Cybersecurity",
+  title: "WASSI Soultone — Développeur Web (WordPress · React/Next.js · Vue.js)",
   description:
-    "Portfolio de WASSI Soultone — Développeur fullstack (Python/Django) & analyste cybersécurité. Expérience en produits web, API, DevOps, SOC et pentest.",
+    "Portfolio de WASSI Soultone — Développeur web fullstack (WordPress, React/Next.js, Vue.js). Sites vitrines, plateformes web et sensibilité sécurité.",
 };
 
 export default function RootLayout({
