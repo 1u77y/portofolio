@@ -396,7 +396,7 @@ export default function Home() {
   return (
     <LazyMotion features={domAnimation}>
       <main className="min-h-screen bg-[radial-gradient(1200px_circle_at_18%_-10%,rgba(37,99,235,0.18),transparent_55%),radial-gradient(900px_circle_at_88%_0%,rgba(56,189,248,0.20),transparent_50%),linear-gradient(to_bottom,#ffffff,#f1f5ff_45%,#ffffff)] text-slate-950">
-        <div className="relative mx-auto min-h-screen max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="relative mx-auto min-h-screen max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Ambient animated blobs */}
           <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
             <div className="animated-blob absolute -left-24 -top-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
