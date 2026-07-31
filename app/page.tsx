@@ -2,7 +2,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
+import { AnimatePresence, LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 type Language = "en" | "fr";
@@ -129,6 +129,7 @@ function Reveal({
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("fr");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const t = (fr: string, en: string) => (language === "fr" ? fr : en);
 
@@ -461,8 +462,62 @@ export default function Home() {
                   EN
                 </button>
               </div>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen((v) => !v)}
+                aria-expanded={mobileMenuOpen}
+                aria-label={t("Ouvrir le menu", "Open menu")}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200/80 bg-white/70 text-slate-900 shadow-sm transition hover:bg-white lg:hidden"
+              >
+                <span className="relative flex h-3.5 w-4 flex-col justify-between">
+                  <span
+                    className={cx(
+                      "block h-0.5 w-full rounded-full bg-slate-900 transition",
+                      mobileMenuOpen && "translate-y-[6px] rotate-45",
+                    )}
+                  />
+                  <span
+                    className={cx(
+                      "block h-0.5 w-full rounded-full bg-slate-900 transition",
+                      mobileMenuOpen && "opacity-0",
+                    )}
+                  />
+                  <span
+                    className={cx(
+                      "block h-0.5 w-full rounded-full bg-slate-900 transition",
+                      mobileMenuOpen && "-translate-y-[6px] -rotate-45",
+                    )}
+                  />
+                </span>
+              </button>
             </div>
           </div>
+
+          <AnimatePresence initial={false}>
+            {mobileMenuOpen ? (
+              <m.nav
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
+                className="overflow-hidden lg:hidden"
+              >
+                <div className="mx-auto flex max-w-6xl flex-col gap-1 pt-3">
+                  {navLinks.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-900/5 hover:text-slate-950"
+                    >
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              </m.nav>
+            ) : null}
+          </AnimatePresence>
         </m.header>
 
         {/* Hero */}
@@ -533,7 +588,7 @@ export default function Home() {
                 <div className="w-full max-w-sm">
                   <div className="relative aspect-[4/5] w-full">
                     <Image
-                      src="/photo.png"
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/photo.png`}
                       alt="WASSI Soultone"
                       fill
                       sizes="(max-width: 1024px) 320px, 360px"
